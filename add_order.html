@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs-3.3.7/jq-3.3.1/dt-1.10.18/datatables.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/default.css">
+
+    <title>bright</title>
+</head>
+
+<body>
+
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+
+            <!-- side menu -->
+            <div class="col-md-2 col-sm-1 col-xm-1 hidden-xs display-table-cell" id="side-menu">
+                <div class="logo hidden-sm hidden-xs">
+                    <img id="profile" src="images/logo.jpg" alt="logo">
+                </div>
+
+                <ul class="dashboard-links">
+                    <li class="link">
+                        <a href="index.html">
+                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Dashboard</span>
+                        </a>
+                        <a href="orders.html" class="active">
+                            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Orders</span>
+                            <span class="label label-success pull-right hidden-xs hidden-sm orders-count"></span>
+                        </a>
+                        <a href="customers.html">
+                            <span class="fa fa-users" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Customers</span>
+                            <span class="label label-success pull-right hidden-xs hidden-sm customers-count"></span>
+                        </a>
+                        <a href="products.html" class="hide-user">
+                            <span class="fa fa-briefcase" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Products</span>
+                            <span class="label label-success pull-right hidden-xs hidden-sm products-count"></span>
+                        </a>
+                        <a href="users.html" class="hide-user">
+                            <span class="fa fa-user" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Users</span>
+                            <span class="label label-success pull-right hidden-xs hidden-sm users-count"></span>
+                        </a>
+                        <a href="reports.html" class="hide-user">
+                            <span class="fa fa-bar-chart" aria-hidden="true"></span>
+                            <span class="hidden-xs hidden-sm">Reports</span>
+                            <span class="label label-success pull-right hidden-xs hidden-sm"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- main content area -->
+            <div class="col-md-10 col-sm-11 col-xs-11 display-table-cell">
+                <!-- navigation -->
+                <div class="row">
+                    <header id="nav-header" class="clearfix">
+                        <nav class="navbar-default pull-left">
+                            <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="offcanvas"
+                                data-target="#side-menu">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </nav>
+                        <ul class="pull-right">
+                            <li id="logout">
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                    log out
+                                </a>
+                            </li>
+                        </ul>
+                    </header>
+                </div>
+
+                <div class="add-order-tabs">
+                    <span id="error"></span>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#add-order-section" data-toggle="tab">New Order</a>
+                        </li>
+                        <li class="hide-admin"><a href="#product-request-section" data-toggle="tab">Product Requests</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active" id="add-order-section">
+                            <!-- new order form -->
+                            <div class="row">
+                                <div class="col-md-8 panel-content" style="margin-bottom: 0px; padding-bottom: 0px;">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">New Order Details</div>
+                                        <div class="panel-body">
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="customer">Customer
+                                                        name:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-user"></i></span>
+                                                            <select id="customerName" class="customers form-control"
+                                                                data-live-search="true" data-size="5">
+                                                                <option selected="selected" disabled="true">--Please
+                                                                    Select --
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="product">Product:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="fa fa-briefcase"></i></span>
+                                                            <select id="product" class="products form-control">
+                                                                <option selected="selected" disabled="true">--Please
+                                                                    Select --
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3"
+                                                        for="quantity">Quantity:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-list-alt"></i></span>
+                                                            <input type="number" class="form-control" id="quantity"
+                                                                placeholder="0" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="cost">Total Cost:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-usd"></i></span>
+                                                            <input type="text" class="form-control" id="cost"
+                                                                placeholder="Kshs 0.00">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group hide-user">
+                                                    <label class="control-label col-sm-3" for="status">Status:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="fa fa-briefcase"></i></span>
+                                                            <select class="statuses form-control"
+                                                                data-live-search="true" id="status">
+                                                                <option value="UNPAID">UNPAID</option>
+                                                                <option value="PAID">PAID</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                        <button id="addOrder" class="btn btn-primary pull-right">Add
+                                                            Order</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="product-request-section">
+                            <!-- new product request form -->
+                            <div class="row hide-admin">
+                                <div class="col-md-8 panel-content">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">Product Request Details</div>
+                                        <div class="panel-body">
+                                            <form class="form-horizontal" action="/action_page.php">
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3" for="name">Product
+                                                        Name:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-briefcase"></i></span>
+                                                            <input type="text" class="form-control" id="productName"
+                                                                placeholder="name" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-sm-3"
+                                                        for="category">Category:</label>
+                                                    <div class="col-sm-9 inputGroupContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i
+                                                                    class="glyphicon glyphicon-th-large"></i></span>
+                                                            <select class="categories form-control"
+                                                                data-live-search="true" id="category">
+                                                                <option value="FAN BELTS">FAN BELTS</option>
+                                                                <option value="BOLT">BOLT</option>
+                                                                <option value="GUM">GUM</option>
+                                                                <option value="BRAKE PAD">BRAKE PAD</option>
+                                                                <option value="CENTER BOLT">CENTER BOLT</option>
+                                                                <option value="FINGERS">FINGERS</option>
+                                                                <option value="CENTER PLATE">CENTER PLATE</option>
+                                                                <option value="CLUTCH FACING">CLUTCH FACING</option>
+                                                                <option value="BRAKE LINING">BRAKE LINING</option>
+                                                                <option value="CLUTCH COVER">CLUTCH COVER</option>
+                                                                <option value="TIMING BELT">TIMING BELT</option>
+                                                                <option value="REBONDING">REBONDING</option>
+                                                                <option value="RECONDITIONED">RECONDITIONED</option>
+                                                                <option value="RIVETS">RIVETS</option>
+                                                                <option value="ROLL LINING">ROLL LINING</option>
+                                                                <option value="CLUCTH SEGMENT">CLUCTH SEGMENT</option>
+                                                                <option value="WHEEL STUD">WHEEL STUD</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                        <button id="addProductRequest"
+                                                            class="btn btn-success pull-right request-btn">Send
+                                                            Request</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- footer -->
+                <div class="row">
+                    <footer id="footer" class="clearfix">
+                        <div class="pull-left"><b>Copyright </b>&copy; 2019</div>
+                        <div class="pull-right">bright</div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs-3.3.7/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script type="text/javascript" src="js/default.js"></script>
+    <script type="text/javascript" src="js/add_order.js"></script>
+    <script type="text/javascript" src="js/product_request.js"></script>
+</body>
+
+</html>
