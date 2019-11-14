@@ -14,6 +14,8 @@ Clone the repo
 git clone https://github.com/izo30/bright
 ```
 Create the database
+
+Run the app
 ```
 run index.html
 ```
