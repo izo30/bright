@@ -21,7 +21,7 @@ run index.html
 ```
 
 ## Deployment
-The api is deployed on heroku on [THIS](https://dashboard.heroku.com/apps/glacial-depths-26958 "Heroku Link") link
+The app is deployed on [THIS](https://isaacwangethi.000webhostapp.com/bright " link") link
 
 ## Built with
 HTML, PHP, MySQL
